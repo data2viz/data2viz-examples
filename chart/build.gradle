@@ -1,0 +1,77 @@
+buildscript {
+    ext.kotlin_version = "1.2.0-rc-39"
+    ext.data2viz_version = "0.2.4"
+    ext.optimizeDist = true
+
+
+    repositories {
+        mavenCentral()
+        maven { url "http://dl.bintray.com/kotlin/kotlin-eap-1.2" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.moowork.gradle:gradle-node-plugin:1.2.0'
+    }
+}
+
+
+repositories {
+    mavenCentral()
+    maven { url "http://dl.bintray.com/kotlin/kotlin-eap-1.2" }
+    maven { url "http://dl.bintray.com/data2viz/data2viz" }
+}
+
+
+apply plugin: "kotlin-dce-js"
+apply plugin: 'kotlin-platform-js'
+apply plugin: 'com.moowork.node'
+
+node {
+    download true
+}
+
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "io.data2viz:d2v-axis-js:$data2viz_version"
+    compile "io.data2viz:d2v-color-js:$data2viz_version"
+    compile "io.data2viz:d2v-core-js:$data2viz_version"
+    compile "io.data2viz:d2v-interpolate-js:$data2viz_version"
+    compile "io.data2viz:d2v-svg-js:$data2viz_version"
+}
+
+compileKotlin2Js {
+    kotlinOptions {
+        moduleKind = 'umd'
+        main = "call"
+    }
+}
+
+
+runDceKotlinJs.keep "chart.displayChart"
+
+
+task populateNodeModules(type: Copy, dependsOn: runDceKotlinJs) {
+
+    from compileKotlin2Js.destinationDir
+
+    configurations.testCompile.each {
+        from zipTree(it.absolutePath).matching { include '*.js' }
+    }
+
+    into "${buildDir}/node_modules"
+}
+
+
+task yarnInstall(type: YarnTask) {
+    args = ['install']
+}
+
+task webpack(type: YarnTask, dependsOn: [populateNodeModules, yarnInstall]) {
+    args = ['webpack']
+}
+
+
+assemble.dependsOn webpack
