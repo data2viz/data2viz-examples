@@ -1,0 +1,19 @@
+
+apply plugin: 'kotlin-platform-jvm'
+
+dependencies {
+    expectedBy project(":voronoisphere-common")
+//    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "io.data2viz:d2v-core-jvm:$data2viz_version"
+    compile "io.data2viz:d2v-color-jvm:$data2viz_version"
+    compile "io.data2viz:d2v-interpolate-jvm:$data2viz_version"
+//    compile 'io.data2viz:d2v-svg-jvm:0.2.0'
+    compile "io.data2viz:d2v-voronoi-jvm:$data2viz_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile 'junit:junit:4.12'
+}
+
+[compileKotlin, compileTestKotlin]*.configure {
+    kotlinOptions.jvmTarget = 1.8
+    kotlinOptions.jvmTarget = 1.8
+}

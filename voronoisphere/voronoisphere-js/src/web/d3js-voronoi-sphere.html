@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voronoi Sphere in D3</title>
+    <style>
+
+        .triangles {
+            stroke: #F00;
+            fill: none;
+        }
+
+        .polygons {
+            fill: none;
+            stroke: #000;
+        }
+
+        /*.polygons :first-child {
+            fill: #f00;
+        }*/
+
+        .sites {
+            fill: #000;
+            stroke: #fff;
+        }
+
+        /*.sites :first-child {
+            fill: #fff;
+        }*/
+
+    </style>
+</head>
+<body>
+
+<script src="../../node_modules/d3/build/d3.min.js"></script>
+<script src="voronoiSphere3.js"></script>
+
+<div style="font-size: 22px; position:absolute;z-index:2;">
+    <div id="num">Number of points: <span>?</span></div>
+    <div id="fps">FPS: <span>?</span></div>
+</div>
+
+<svg>
+    <defs>
+        <clipPath id="circle-mask">
+            <circle cx="300" cy="400" r="200"></circle>
+        </clipPath>
+    </defs>
+</svg>
+
+<script>
+    voronoiSphere()
+</script>
+
+</body>
+</html>
