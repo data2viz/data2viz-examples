@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = "1.2.0-rc-39"
+    ext.kotlin_version = "1.2.0"
     ext.data2viz_version = "0.2.4"
     ext.optimizeDist = true
 

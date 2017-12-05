@@ -22,7 +22,7 @@ data class SphereParams(
         val chunkSize: Int = 1) {
 
     fun eventuallyUpdatePointNumber(curFPS: Double, curPoint: Int) {
-        if (curFPS > 40.0 && curPoint <= pointNumber - chunkSize + 5) {
+        if (curFPS > 25.0 && curPoint <= pointNumber - chunkSize + 5) {
             pointNumber += chunkSize
         }
     }
