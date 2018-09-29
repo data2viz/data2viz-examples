@@ -1,5 +1,0 @@
-rootProject.name = 'voronoisphere'
-
-include "voronoisphere-common"
-include "voronoisphere-js"
-include "voronoisphere-jvm"

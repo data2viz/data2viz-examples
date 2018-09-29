@@ -1,8 +1,0 @@
-
-apply plugin: 'kotlin-platform-common'
-dependencies {
-    compile "io.data2viz:d2v-core-common:$data2viz_version"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
-    testCompile "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version"
-    testCompile "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
-}
