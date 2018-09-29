@@ -1,0 +1,29 @@
+group 'io.data2viz.example'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.2.71'
+    ext.data2viz_version = '0.7.0-RC3'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin2js'
+apply plugin: 'kotlin-dce-js'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "io.data2viz:d2v-viz-js:$data2viz_version"
+}
+
+compileKotlin2Js.kotlinOptions.moduleKind = "umd"
+runDceKotlinJs.dceOptions.devMode = true
