@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-apply plugin: 'kotlin2js'
+apply plugin: 'kotlin-platform-js'
 apply plugin: 'kotlin-dce-js'
 
 repositories {
@@ -18,8 +18,10 @@ repositories {
 }
 
 dependencies {
+    expectedBy project(":common")
+    compile "io.data2viz:d2v-data2viz-js:$data2viz_version"
+    compile "io.data2viz:d2v-data2viz-js:$data2viz_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
-    compile "io.data2viz:d2v-viz-js:$data2viz_version"
 }
 
 compileKotlin2Js.kotlinOptions.moduleKind = "umd"

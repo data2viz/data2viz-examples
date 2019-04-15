@@ -1,2 +1,4 @@
 
-include "js:bootstrap"
+include "common"
+include "js"
+include "jfx"

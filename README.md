@@ -1,4 +1,4 @@
 # data2viz-examples
 
-
-Various examples for data2viz.io
+This simple project shows how to share common data2viz code with 
+target platforms:  JS and JFX.
