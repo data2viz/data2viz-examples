@@ -1,0 +1,36 @@
+group 'io.data2viz.barchartJS'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.3.40'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin2js'
+apply plugin: 'kotlin-dce-js'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    implementation "io.data2viz:d2v-data2viz-js:0.7.2-RC1"
+}
+
+
+compileKotlin2Js {
+    kotlinOptions {
+        metaInfo = true
+        sourceMap = true
+        sourceMapEmbedSources = "always"
+        moduleKind = 'umd'
+    }
+}
+
+runDceKotlinJs.dceOptions.devMode = true
