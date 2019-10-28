@@ -5,9 +5,11 @@ buildscript {
     ext.kotlin_version = '1.3.50'
     repositories {
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.moowork.gradle:gradle-node-plugin:$gradle_node_version"
     }
 }
 
@@ -33,4 +35,18 @@ compileKotlin2Js {
     }
 }
 
-runDceKotlinJs.dceOptions.devMode = true
+apply plugin: 'com.moowork.node'
+
+task yarnInstall(type: YarnTask) {
+    args = ['install']
+}
+
+task bundle(type: YarnTask, dependsOn: [runDceKotlinJs, yarnInstall]) {
+    args = ["run", "bundle"]
+}
+
+
+build.dependsOn(bundle)
+
+
+runDceKotlinJs.dceOptions.devMode = false
