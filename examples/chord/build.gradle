@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.61'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+kotlin {
+    js {
+        browser {}
+    }
+    jvm{}
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib-common')
+                api "io.data2viz.d2v:chord:$data2viz_version"
+                api "io.data2viz.d2v:color:$data2viz_version"
+                api "io.data2viz.d2v:shape:$data2viz_version"
+                api "io.data2viz.d2v:viz:$data2viz_version"
+            }
+        }
+        jsMain {
+            dependencies {
+                implementation kotlin('stdlib-js')
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation kotlin('stdlib')
+            }
+        }
+    }
+
+}
