@@ -9,7 +9,7 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
+//    mavenLocal()
     jcenter()
 }
 kotlin {
@@ -22,22 +22,37 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib-common')
-                api "io.data2viz.d2v:hexbin:$data2viz_version"
-                api "io.data2viz.d2v:random:$data2viz_version"
-                api "io.data2viz.d2v:color:$data2viz_version"
-                api "io.data2viz.d2v:scale:$data2viz_version"
-                api "io.data2viz.d2v:shape:$data2viz_version"
-                api "io.data2viz.d2v:viz:$data2viz_version"
+                api "io.data2viz.d2v:hexbin-common:$data2viz_version"
+                api "io.data2viz.d2v:random-common:$data2viz_version"
+                api "io.data2viz.d2v:core-common:$data2viz_version"
+                api "io.data2viz.d2v:color-common:$data2viz_version"
+                api "io.data2viz.d2v:scale-common:$data2viz_version"
+                api "io.data2viz.d2v:shape-common:$data2viz_version"
+                api "io.data2viz.d2v:viz-common:$data2viz_version"
             }
         }
         jsMain {
             dependencies {
                 implementation kotlin('stdlib-js')
+                api "io.data2viz.d2v:hexbin-js:$data2viz_version"
+                api "io.data2viz.d2v:random-js:$data2viz_version"
+                api "io.data2viz.d2v:core-js:$data2viz_version"
+                api "io.data2viz.d2v:color-js:$data2viz_version"
+                api "io.data2viz.d2v:scale-js:$data2viz_version"
+                api "io.data2viz.d2v:shape-js:$data2viz_version"
+                api "io.data2viz.d2v:viz-js:$data2viz_version"
             }
         }
         jvmMain {
             dependencies {
                 implementation kotlin('stdlib')
+                api "io.data2viz.d2v:hexbin-jvm:$data2viz_version"
+                api "io.data2viz.d2v:random-jvm:$data2viz_version"
+                api "io.data2viz.d2v:core-jvm:$data2viz_version"
+                api "io.data2viz.d2v:color-jvm:$data2viz_version"
+                api "io.data2viz.d2v:scale-jvm:$data2viz_version"
+                api "io.data2viz.d2v:shape-jvm:$data2viz_version"
+                api "io.data2viz.d2v:viz-jfx:$data2viz_version"
             }
         }
     }
