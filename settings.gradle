@@ -1,10 +1,10 @@
 
-include "common"
-include "js"
-include "jfx"
+//include "common"
+//include "js"
+//include "jfx"
 include ":examples"
-include ":examples:chord"
+//include ":examples:chord"
 include ":examples:hexbin"
 
-include ":tutorials"
-include ":tutorials:jfx-barchart"
+//include ":tutorials"
+//include ":tutorials:jfx-barchart"
