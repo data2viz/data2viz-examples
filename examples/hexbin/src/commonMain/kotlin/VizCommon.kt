@@ -7,7 +7,6 @@ import io.data2viz.hexbin.Bin
 import io.data2viz.hexbin.hexbinGenerator
 import io.data2viz.random.RandomDistribution
 import io.data2viz.scale.ScalesChromatic
-import io.data2viz.scale.StrictlyContinuous
 import io.data2viz.viz.PathNode
 import io.data2viz.viz.Viz
 import io.data2viz.viz.viz
@@ -30,9 +29,11 @@ val hexbin = hexbinGenerator {
 
 val bins by lazy { hexbin(points) }
 
-val scale = ScalesChromatic.Sequential.SingleHue.purples {
-    domain = StrictlyContinuous(0.0, bins.map { it.points.count().toDouble() }.max()!!)
+val scale = ScalesChromatic.Continuous.linearLAB {
+    domain = listOf(0.0, bins.map { it.points.count().toDouble() }.max()!!)
+    range = listOf(Colors.Web.white, Colors.rgb(0x0141F79))
 }
+
 fun buildViz(): Viz {
 
     val bins: MutableList<Bin> = hexbin(points)
