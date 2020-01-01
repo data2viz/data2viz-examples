@@ -3,13 +3,18 @@ plugins {
 }
 
 repositories {
-//    mavenLocal()
-    jcenter()
+    jcenter {
+        //For gradle version 5.3 < and < 6
+//        metadataSources {
+//            gradleMetadata()
+//        }
+    }
+    mavenCentral()
 }
 kotlin {
-//    js {
-//        browser {}
-//    }
+    js {
+        browser {}
+    }
     jvm{}
 
     sourceSets {
@@ -25,12 +30,12 @@ kotlin {
                 api "io.data2viz.d2v:viz:$data2viz_version"
             }
         }
-//        jsMain {
-//            dependencies {
-//                implementation kotlin('stdlib-js')
-//                implementation "io.data2viz.d2v:viz-js:$data2viz_version"
-//            }
-//        }
+        jsMain {
+            dependencies {
+                implementation kotlin('stdlib-js')
+                implementation "io.data2viz.d2v:viz-js:$data2viz_version"
+            }
+        }
         jvmMain {
             dependencies {
                 implementation kotlin('stdlib')
