@@ -1,17 +1,20 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.61'
 }
 
 group 'io.data2viz'
 version '1.0-SNAPSHOT'
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation "io.data2viz:d2v-data2viz-jfx:0.8.0-RC1"
+    api "io.data2viz.d2v:core-jvm:$data2viz_version"
+    api "io.data2viz.d2v:scale-jvm:$data2viz_version"
+    api "io.data2viz.d2v:viz-jfx:$data2viz_version"
 }
 
 compileKotlin {
