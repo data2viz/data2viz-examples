@@ -1,8 +1,13 @@
+//for gradle 5.3+, not necessary for 6+
+//enableFeaturePreview('GRADLE_METADATA')
 
-include ":examples"
-//include ":examples:chord"
-include ":examples:hexbin"
+def module(group, name) {
+	include(name)
+	project(":$name").projectDir = file("$group/$name")
+}
 
-include ":tutorials"
-include ":tutorials:barchart-js"
-include ":tutorials:barchart-jfx"
+module("examples", "hexbin")
+module("tutorials", "barchart-android")
+module("tutorials", "barchart-js")
+module("tutorials", "barchart-jfx")
+
